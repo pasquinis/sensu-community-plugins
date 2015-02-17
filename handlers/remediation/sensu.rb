@@ -98,7 +98,6 @@ class Remediator < Sensu::Handler
       puts "REMEDIATION: Received API Response (#{response.code}): "\
            "#{response.body}, exiting."
     end
-    File.open('/tmp/last_remediation_caller', 'w+') { |f| f.write("#{Time.now}  #{client}") }
   end
 
   # Examine the defined remediations and return an array of
