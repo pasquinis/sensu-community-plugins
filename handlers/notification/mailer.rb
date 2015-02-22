@@ -135,7 +135,7 @@ class Mailer < Sensu::Handler
             </br>
             Check Name:  #{@event['check']['name']}
             </br>
-            Command:  #{@event['check']['command']}
+            Command:  #{command}
             </br>
             Status:  #{status_to_string}
             </br>
