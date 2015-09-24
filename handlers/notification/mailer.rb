@@ -123,22 +123,22 @@ class Mailer < Sensu::Handler
     bodyhtml = <<-BODYHTML.gsub(/^\s+/, '')
 
             <b>#{@event['check']['output']}</b>
-            </br>
-            </br>
+            <br />
+            <br />
             Admin GUI: #{admin_gui}
-            </br>
+            <br />
             Host: #{@event['client']['name']}
-            </br>
+            <br />
             Timestamp: #{Time.at(@event['check']['issued'])}
-            </br>
+            <br />
             Address:  #{@event['client']['address']}
-            </br>
+            <br />
             Check Name:  #{@event['check']['name']}
-            </br>
+            <br />
             Command:  #{command}
-            </br>
+            <br />
             Status:  #{status_to_string}
-            </br>
+            <br />
             Occurrences:  #{@event['occurrences']}
             #{playbook}
 
