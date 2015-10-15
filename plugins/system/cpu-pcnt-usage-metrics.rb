@@ -57,6 +57,9 @@ class CpuGraphite < Sensu::Plugin::Metric::CLI::Graphite
   end
 
   def run
+    # sleeping a random amount of time to break well known CPU pattern (EG: systems with cron jobs)
+    sleep(Random.new.rand(0..5))
+
     cpu_sample1 = acquire_proc_stats
     sleep(1)
     cpu_sample2 = acquire_proc_stats
