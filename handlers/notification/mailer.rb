@@ -103,8 +103,8 @@ class Mailer < Sensu::Handler
     smtp_authentication = settings[json_config]['smtp_authentication'] || :plain
     smtp_enable_starttls_auto = settings[json_config]['smtp_enable_starttls_auto'] == 'false' ? false : true
     # try to redact passwords from output and command
-    output = "#{@event['check']['output']}".gsub(/(-p|-P|--password)\s*\S+/, '\1 <password redacted>')
-    command = "#{@event['check']['command']}".gsub(/(-p|-P|--password)\s*\S+/, '\1 <password redacted>')
+    output = "#{@event['check']['output']}".gsub(/(-p|-P|--password|--dbpass)\s*\S+/, '\1 <password redacted>')
+    command = "#{@event['check']['command']}".gsub(/(-p|-P|--password|--dbpass)\s*\S+/, '\1 <password redacted>')
 
     playbook = "Playbook:  #{@event['check']['playbook']}" if @event['check']['playbook']
     body = <<-BODY.gsub(/^\s+/, '')
